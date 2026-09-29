@@ -1,1 +1,34 @@
 
+function calculateBudget() {
+    let income = Number(document.getElementById("income").value);
+    let expense = Number(document.getElementById("expense").value);
+
+    let result = document.getElementById("result");
+    let recommendation = document.getElementById("recommendation");
+
+    if (income <= 0 || expense < 0) {
+        result.innerHTML = "Please enter valid amounts.";
+        recommendation.innerHTML = "Enter your income and expenses correctly.";
+        return;
+    }
+
+    let savings = income - expense;
+
+    result.innerHTML =
+        "Monthly Income: ₹" + income +
+        "<br>Monthly Expense: ₹" + expense +
+        "<br>Remaining Balance: ₹" + savings;
+
+    if (savings > income * 0.30) {
+        recommendation.innerHTML =
+            " Great! You are saving well. Keep saving and consider investing a part of your savings.";
+    } 
+    else if (savings > 0) {
+        recommendation.innerHTML =
+            "Good! Try reducing unnecessary expenses and increase your monthly savings.";
+    } 
+    else {
+        recommendation.innerHTML =
+            "Your expenses are higher than your income. Try creating a simple spending plan and reduce unnecessary expenses.";
+    }
+}
